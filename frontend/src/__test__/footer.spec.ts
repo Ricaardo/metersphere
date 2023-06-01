@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import { describe, expect, test } from 'vitest';
-import Footer from './index.vue';
+import Footer from '@/components/footer/index.vue';
 
 describe('Footer', () => {
   test('mount @vue/test-utils', () => {
