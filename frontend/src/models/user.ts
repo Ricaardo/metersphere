@@ -1,8 +1,10 @@
 export interface LoginData {
   username: string;
   password: string;
+  authenticate: string;
 }
 
 export interface LoginRes {
-  token: string;
+  sessionId: string;
+  csrfToken: string;
 }
