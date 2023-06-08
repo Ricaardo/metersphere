@@ -1,11 +1,7 @@
 <template>
   <div class="h-[100vh] bg-white px-[20px] py-[16px] pb-0">
     <div class="mb-10">表格</div>
-    <ms-base-table v-bind="propsRes" v-on="propsEvent">
-      <template #createTime="{ record }">
-        {{ dayjs(record.createTime).format('YYYY-MM-DD HH:mm:ss') }}
-      </template>
-    </ms-base-table>
+    <ms-base-table v-bind="propsRes" v-on="propsEvent"> </ms-base-table>
   </div>
   <a-divider />
 </template>
@@ -16,7 +12,6 @@
   import { MsTableColumn } from '@/components/ms-table/type';
   import useTable from '@/components/ms-table/useTable';
   import { getTableList } from '@/api/modules/api-test/index';
-  import dayjs from 'dayjs';
 
   const columns: MsTableColumn = [
     {
@@ -46,7 +41,7 @@
     },
     {
       title: '更新时间',
-      slotName: 'updataTime',
+      dataIndex: 'updateTime',
     },
     {
       title: '用例数',
@@ -81,7 +76,11 @@
     },
   ];
 
-  const { propsRes, propsEvent, loadList } = useTable(getTableList, { columns, scroll: { y: 750, x: 2000 } });
+  const { propsRes, propsEvent, loadList } = useTable(getTableList, {
+    columns,
+    scroll: { y: 750, x: 2000 },
+    selectable: true,
+  });
 
   const fetchData = async () => {
     await loadList();
